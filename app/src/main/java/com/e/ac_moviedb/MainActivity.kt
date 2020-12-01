@@ -3,6 +3,7 @@ package com.e.ac_moviedb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.e.ac_moviedb.Model.MovieDbClientRetrofitService
 import com.e.ac_moviedb.databinding.ActivityMainBinding
 
@@ -22,8 +23,11 @@ class MainActivity : AppCompatActivity() {
              val body = popularMovies.execute().body()
 
             if (body != null) {
-                    Log.d("tamano ", "bloque   -----------------------: ${body.results.size}")
+                    Log.d("MainActivity ", "bloque: ${body.results.size}")
                 }
+            else {
+                Toast.makeText(this, "el mensaje no fue leido", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
