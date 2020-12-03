@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AC_MovieDB</string>
+    <string name="api_key">b95f3d309c5fc5659106c53f1dde31c0</string>
 </resources>
