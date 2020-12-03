@@ -2,7 +2,7 @@ package com.e.ac_moviedb.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDb(
+data class Movie(
     val adult: Boolean,
     @SerializedName("backdrop_path")
     val backdropPath: String,
