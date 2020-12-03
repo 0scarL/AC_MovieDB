@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.myRecyclerView.adapter = movieAdapter
 
-
+        /**uso de libreria standar de Android, no es lo mas optimo para realizar la peticion en otro hilo**/
         thread{
             val apikey = getString(R.string.api_key)
             /**puedo crear una variable que contenga: la peticion del servicio usando el objeto Retrofit Service creado
