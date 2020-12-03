@@ -8,8 +8,14 @@ import retrofit2.http.Query
 
 interface MovieDbApiService {
 
+
+///////////////////sin optimizacion para corrutinas///////////////////////////////
+//    @GET("movie/popular")
+//    fun listPopupularMovies (@Query("api_key")apiKey : String) : Call<MovieDbResults>
+
+    /**optimizada la funcion para usar corrutinas**/
     @GET("movie/popular")
-    fun listPopupularMovies (@Query("api_key")apiKey : String) : Call<MovieDbResults>
+    suspend fun listPopupularMovies (@Query("api_key")apiKey : String) : MovieDbResults
 
     @GET("movie/popular")
     fun listPopupularMoviesEspanol (@Query("api_key")apiKey : String, @Query("language")language: String) : Call<MovieDbResults>
