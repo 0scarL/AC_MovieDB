@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         onEfect(binding)
 
-
+        /**se pasa funcion lamda para detectar evento click**/
         movieAdapter = MovieAdapter(
                 emptyList(), { Toast.makeText(this@MainActivity, it.title, Toast.LENGTH_SHORT).show() } )
 
