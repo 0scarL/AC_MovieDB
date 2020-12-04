@@ -11,7 +11,7 @@ class MovieVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind (movie: Movie, movieListener: (movie: Movie)->Unit){
         binding.itemTitle.text = movie.title
         Glide.with(itemView.context)
-                .load("https://image.tmdb.org/t/p/w185/${movie.posterPath}")
+                .load("https://image.tmdb.org/t/p/w780/${movie.posterPath}")
                 .centerCrop()
                 .into(binding.itemImage)
         itemView.setOnClickListener { movieListener(movie) }

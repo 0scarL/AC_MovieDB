@@ -1,11 +1,13 @@
 package com.e.ac_moviedb
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.e.ac_moviedb.Adapter.MovieAdapter
+import com.e.ac_moviedb.Model.Movie
 import com.e.ac_moviedb.Model.MovieDbClientRetrofit
 import com.e.ac_moviedb.Model.MovieDbResults
 import com.e.ac_moviedb.databinding.ActivityMainBinding
@@ -28,14 +30,20 @@ class MainActivity : AppCompatActivity() {
 
         /**se pasa funcion lamda para detectar evento click**/
         movieAdapter = MovieAdapter(
-                emptyList(), { Toast.makeText(this@MainActivity, it.title, Toast.LENGTH_SHORT).show() } )
-
+                emptyList(), {
+                goToDetailActivity(it) //si toca envia a otro activity
+                Toast.makeText(this@MainActivity, it.title, Toast.LENGTH_SHORT).show() } )
         binding.myRecyclerView.adapter = movieAdapter
 
-
-
     }
-///////////////////////////////////////////////Con Corrutinas y optimizacion de interfaz metodos Retrofit////////////////////////////////////////
+
+    private fun goToDetailActivity(movie: Movie) {
+        val intentDetail = Intent(this, DetailActivity::class.java)
+        intentDetail.putExtra(DetailActivity.EXTRA_MOVIE, movie)
+        startActivity(intentDetail)
+    }
+
+    ///////////////////////////////////////////////Con Corrutinas y optimizacion de interfaz metodos Retrofit////////////////////////////////////////
     fun conCorrutinaRetrofitOptimizado(binding: ActivityMainBinding) {
         lifecycleScope.launch {
             val apikey = getString(R.string.api_key)
@@ -45,12 +53,10 @@ class MainActivity : AppCompatActivity() {
             movieAdapter!!.notifyDataSetChanged()
             offEfect(binding)
 
+        }
     }
-    }
-
 
 ////////////////////////////////////////////////Con Corrutinas lifeCycle y withContext, requiere interfaz retrofit sin optimizacion///////////////////////////////////////////////////////
-
 //fun conCorrutina(binding: ActivityMainBinding) {
 //
 //    lifecycleScope.launch {
