@@ -18,9 +18,17 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    val registerPermissionLaunch =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGaranted ->
+            val msj = when {
+                isGaranted -> "Permission Garanted"
+                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION) -> "The permission is required"
+                else -> "Permission Denied"
+            }
+            Toast.makeText(this, msj, Toast.LENGTH_SHORT).show()
+    }
 
-
-    private var movieAdapter : MovieAdapter? = null
+                private var movieAdapter : MovieAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         onEfect(binding)
         //sinCorrutina(binding)
         //conCorrutina(binding)
+        /**Lanza permiso de localizacion**/
+        registerPermissionLaunch.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+
         conCorrutinaRetrofitOptimizado(binding)
 
         /**se pasa funcion lamda para detectar evento click**/
