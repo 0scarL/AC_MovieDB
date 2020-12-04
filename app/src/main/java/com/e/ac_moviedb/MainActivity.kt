@@ -1,10 +1,12 @@
 package com.e.ac_moviedb
 
+import android.Manifest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.e.ac_moviedb.Adapter.MovieAdapter
 import com.e.ac_moviedb.Model.Movie
@@ -15,6 +17,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+
 
     private var movieAdapter : MovieAdapter? = null
 
