@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             val popularMovies: MovieDbResults = MovieDbClientRetrofit.service.listPopupularMovies(apikey)
             Toast.makeText(this@MainActivity, "Datos Cargados", Toast.LENGTH_SHORT).show()
             movieAdapter!!.listMovies = popularMovies.results
-            movieAdapter!!.notifyDataSetChanged()
+            //movieAdapter!!.notifyDataSetChanged()
             offEfect(binding)
 
         }
